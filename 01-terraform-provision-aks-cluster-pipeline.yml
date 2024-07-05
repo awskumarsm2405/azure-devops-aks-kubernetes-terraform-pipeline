@@ -15,15 +15,15 @@ stages:
     - job: TerraformValidateJob
       continueOnError: false
       steps:
-       #- task: PublishPipelineArtifact@1
-        # inputs:
-         #   targetPath: '$(System.DefaultWorkingDirectory)/terraform-manifests'
-          #  artifact: 'terraform-menifests-out'
-           # publishLocation: 'pipeline'
+       - task: PublishPipelineArtifact@1
+         inputs:
+            targetPath: '$(System.DefaultWorkingDirectory)/terraform-manifests'
+            artifact: 'terraform-menifests-out'
+            publishLocation: 'pipeline'
        - task: Bash@3
          inputs:
             targetType: 'inline'
-            script: ls .\Scripts\
+            script: ls ./Scripts
          env:
             MYSECRET: $(Foo)
          
