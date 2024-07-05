@@ -31,11 +31,12 @@ stages:
          inputs:
           terraformVersion: latest
        - task: TerraformCLI@0
-         displayName: 'check terraform version'
+         displayName: 'Check terraform version'
          inputs:
           command: version
          
        - task: TerraformCLI@2
+         displayName: Terraform Init
          inputs:
           command: 'init'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
@@ -48,6 +49,12 @@ stages:
           backendAzureRmKey: 'aks-base.tfstate'
           allowTelemetryCollection: false
           backendAzureRmResourceGroupLocation: 'eastus'
+       - task: TerraformCLI@0
+         displayName: Terraform Validate
+         inputs:
+          command: 'validate'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
+          allowTelemetryCollection: false       
        - task: Bash@3
          inputs:
           targetType: 'inline'
@@ -61,8 +68,8 @@ stages:
          name: PlanSetup
          inputs:
           azureSubscription: 'Azure subscription 1(576f8ce4-7fe6-4346-9caa-29247ef66ff4)'
-          scriptType: 'bash'
-          scriptLocation: 'scriptPath'
-          scriptPath: '$(System.DefaultWorkingDirectory)/Scripts/terraformsetup.sh'
+          scriptType: bash
+          scriptLocation: inlineScript
+          inlineScript: '$(System.DefaultWorkingDirectory)/Scripts/terraformsetup.sh'
           arguments: 'environment=dev'
        
