@@ -22,6 +22,13 @@ stages:
             publishLocation: 'pipeline'
        - task: Bash@3
          inputs:
+            targetType: 'inline'
+            script: ls
+         env:
+            MYSECRET: $(Foo)
+
+       - task: Bash@3
+         inputs:
           targetType: 'inline'
           script: |
             ./terraformsetup.sh
