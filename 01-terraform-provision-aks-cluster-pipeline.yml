@@ -43,7 +43,7 @@ stages:
           backendServiceArm: 'terraform-aks-azurerm-svc-con'
           ensureBackend: true
           backendAzureRmResourceGroupName: 'terraform-storage-rg'
-          backendAzureRmStorageAccountName: 'terraformstatexlrwdrzs'
+          backendAzureRmStorageAccountName: 'terraformstatexlskm'
           backendAzureRmContainerName: 'tfstatefiles'
           backendAzureRmKey: 'aks-base.tfstate'
           allowTelemetryCollection: false
