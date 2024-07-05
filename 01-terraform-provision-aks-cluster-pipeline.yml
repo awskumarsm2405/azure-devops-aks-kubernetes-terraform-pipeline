@@ -27,9 +27,9 @@ stages:
          displayName: 'Executed sh file using filepath'
          inputs:
           targetType: filePath
-          filePath: terraformsetup.sh 
+          filePath: ./Scripts/terraformsetup.sh 
           failOnStderr: true
-          workingDirectory: $(System.DefaultWorkingDirectory)/Scripts 
+          workingDirectory: $(System.DefaultWorkingDirectory) 
        - task: PublishPipelineArtifact@1
          inputs:
             targetPath: '$(System.DefaultWorkingDirectory)/terraform-manifests'
