@@ -59,10 +59,8 @@ stages:
          inputs:
           targetType: 'inline'
           script: |
-            ./terraformsetup.sh
+            ./Scripts/terraformsetup.sh
           failOnStderr: true
-          workingDirectory: "$(System.DefaultWorkingDirectory)/Scripts"
-
        - task: AzureCLI@2
          displayName: SetUp AKS
          name: PlanSetup
