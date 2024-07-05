@@ -43,7 +43,7 @@ stages:
           azureSubscription: 'Azure subscription 1(576f8ce4-7fe6-4346-9caa-29247ef66ff4)'
           scriptType: bash
           scriptLocation: scriptPath
-          scriptPath: './Scripts/terraformsetup.sh'
+          scriptPath: '$(System.DefaultWorkingDirectory)/Scripts/terraformsetup.sh'
           arguments: 'environment=dev'
        
        - task: TerraformInstaller@1
