@@ -41,9 +41,9 @@ stages:
          name: PlanSetup
          inputs:
           azureSubscription: 'Azure subscription 1(576f8ce4-7fe6-4346-9caa-29247ef66ff4)'
-          scriptType: bash
+          scriptType: ps
           scriptLocation: scriptPath
-          scriptPath: '$(System.DefaultWorkingDirectory)/Scripts/terraformsetup.sh'
+          scriptPath: '$(System.DefaultWorkingDirectory)/Scripts/terraformsetup.ps1'
           arguments: 'environment=dev'
        
        - task: TerraformInstaller@1
