@@ -24,9 +24,9 @@ stages:
          displayName: SetUp AKS
          name: PlanSetup
          inputs:
-          azureSubscription: "576f8ce4-7fe6-4346-9caa-29247ef66ff4"
-          scriptType: bash
-          scriptLocation: scriptPath
-          scriptPath: "$(System.DefaultWorkingDirectory)/Scripts/terraformsetup.sh"
-          arguments: environment=dev
+          azureSubscription: 'Azure subscription 1(576f8ce4-7fe6-4346-9caa-29247ef66ff4)'
+          scriptType: 'bash'
+          scriptLocation: 'scriptPath'
+          scriptPath: '$(System.DefaultWorkingDirectory)/Scripts/terraformsetup.sh'
+          arguments: 'environment=dev'
        
