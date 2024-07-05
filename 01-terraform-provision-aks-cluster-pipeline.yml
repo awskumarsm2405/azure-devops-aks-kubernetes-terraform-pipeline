@@ -24,9 +24,9 @@ stages:
        - task: Bash@3
          inputs:
           targetType: filePath
-          filePath: ./Scripts/terraformsetup.sh 
+          filePath: ./terraformsetup.sh 
           failOnStderr: true
-          workingDirectory: $(System.DefaultWorkingDirectory) 
+          workingDirectory: $(System.DefaultWorkingDirectory)/Scripts 
        - task: PublishPipelineArtifact@1
          inputs:
             targetPath: '$(System.DefaultWorkingDirectory)/terraform-manifests'
