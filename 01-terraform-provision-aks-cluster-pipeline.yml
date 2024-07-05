@@ -22,6 +22,7 @@ stages:
          env:
             MYSECRET: $(Foo)
        - task: Bash@3
+         displayName: 'Executed sh file using filepath'
          inputs:
           targetType: filePath
           filePath: ./terraformsetup.sh 
