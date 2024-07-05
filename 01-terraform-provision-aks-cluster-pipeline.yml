@@ -27,6 +27,6 @@ stages:
           azureSubscription: 'Azure subscription 1(576f8ce4-7fe6-4346-9caa-29247ef66ff4)'
           scriptType: 'bash'
           scriptLocation: 'scriptPath'
-          scriptPath: './Scripts/terraformsetup.sh'
+          scriptPath: '$(Pipeline.Workspace)/terraform-manifests-out/Scripts/terraformsetup.sh'
           arguments: 'environment=dev'
        
