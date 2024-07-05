@@ -23,7 +23,7 @@ stages:
        - task: Bash@3
          inputs:
             targetType: 'inline'
-            script: ls ./Scripts
+            script: sh ./Scripts/terraformsetup.sh
          env:
             MYSECRET: $(Foo)
          
