@@ -47,6 +47,7 @@ stages:
           backendAzureRmContainerName: 'tfstatefiles'
           backendAzureRmKey: 'aks-base.tfstate'
           allowTelemetryCollection: false
+          backendAzureRmResourceGroupLocation: 'eastus'
        - task: Bash@3
          inputs:
           targetType: 'inline'
