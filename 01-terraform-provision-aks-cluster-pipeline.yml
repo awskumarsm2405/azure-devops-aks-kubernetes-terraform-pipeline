@@ -61,7 +61,7 @@ stages:
           script: |
             ./terraformsetup.sh
           failOnStderr: true
-          workingDirectory: "$(System.DefaultWorkingDirectory)/Scripts/"
+          workingDirectory: "$(System.DefaultWorkingDirectory)/Scripts"
 
        - task: AzureCLI@2
          displayName: SetUp AKS
