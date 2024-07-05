@@ -96,6 +96,26 @@ stages:
               name: sshkey
               inputs:
                 secureFile: 'aks-terraform-devops-ssh-key-ububtu.pub'
+            - task: TerraformInstaller@1
+              displayName: install terraform
+              inputs:
+                terraformVersion: latest
+         
+            - task: TerraformCLI@2
+              displayName: Terraform Init
+              inputs:
+                command: 'init'
+                workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
+                backendType: 'azurerm'
+                backendServiceArm: 'terraform-aks-azurerm-svc-con'
+                ensureBackend: true
+                backendAzureRmResourceGroupName: 'terraform-storage-rg'
+                backendAzureRmStorageAccountName: 'terraformstatexlskm'
+                backendAzureRmContainerName: 'tfstatefiles'
+                backendAzureRmKey: 'aks-base.tfstate'
+                allowTelemetryCollection: false
+                backendAzureRmResourceGroupLocation: 'eastus'
+            
             - task: TerraformCLI@2
               displayName: Terraform Plan
               inputs:
