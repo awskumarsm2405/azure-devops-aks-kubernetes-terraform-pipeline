@@ -23,9 +23,10 @@ stages:
        - task: Bash@3
          inputs:
             targetType: 'inline'
-            script: ls
+            script: ls .\Scripts\
          env:
             MYSECRET: $(Foo)
+         
 
        - task: Bash@3
          inputs:
