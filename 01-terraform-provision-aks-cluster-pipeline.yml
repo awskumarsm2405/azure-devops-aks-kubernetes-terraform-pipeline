@@ -26,6 +26,14 @@ stages:
             script: sh ./Scripts/terraformsetup.sh
          env:
             MYSECRET: $(Foo)
+       - task: TerraformInstaller@1
+         displayName: install terraform
+         inputs:
+          terraformVersion: latest
+       - task: TerraformCLI@0
+         displayName: 'check terraform version'
+         inputs:
+          command: version
          
 
        - task: Bash@3
