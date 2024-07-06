@@ -119,7 +119,7 @@ stages:
               displayName: Terraform Validate
               inputs:
                 command: 'validate'
-                workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
+                workingDirectory: '$(Pipeline.Workspace)/terraform-manifests-out'
                 allowTelemetryCollection: false       
 
             - task: TerraformCLI@0
