@@ -115,8 +115,14 @@ stages:
                 backendAzureRmKey: 'aks-base.tfstate'
                 allowTelemetryCollection: false
                 backendAzureRmResourceGroupLocation: 'eastus'
-            
-            - task: TerraformCLI@1
+            - task: TerraformCLI@0
+              displayName: Terraform Validate
+              inputs:
+                command: 'validate'
+                workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
+                allowTelemetryCollection: false       
+
+            - task: TerraformCLI@0
               displayName: Terraform Plan
               inputs:
                 command: 'plan'
