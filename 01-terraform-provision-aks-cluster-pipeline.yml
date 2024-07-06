@@ -101,7 +101,7 @@ stages:
               inputs:
                 terraformVersion: latest
          
-            - task: TerraformCLI@2
+            - task: TerraformCLI@1
               displayName: Terraform Init
               inputs:
                 command: 'init'
@@ -116,7 +116,7 @@ stages:
                 allowTelemetryCollection: false
                 backendAzureRmResourceGroupLocation: 'eastus'
             
-            - task: TerraformCLI@0
+            - task: TerraformCLI@1
               displayName: Terraform Plan
               inputs:
                 command: 'plan'
@@ -124,7 +124,7 @@ stages:
                 environmentServiceName: 'terraform-aks-azurerm-svc-con'
                 commandOptions: '-var ssh_public_key=$(sshkey.secureFilePath) -var environment=$(DEV_ENVIRONMENT) -out $(Pipeline.Workspace)/terraform-manifests-out/$(DEV_ENVIRONMENT)-$(Build.BuildId).out'
                 allowTelemetryCollection: false
-            - task: TerraformCLI@0
+            - task: TerraformCLI@1
               displayName: Terraform Apply
               inputs:
                 command: 'apply'
