@@ -42,45 +42,45 @@ stages:
             artifact: 'terraform-menifests-out'
             publishLocation: 'pipeline'
        
-       - task: AzureCLI@2
-         displayName: SetUp AKS
-         name: PlanSetup
-         inputs:
-          azureSubscription: 'Azure subscription 1(576f8ce4-7fe6-4346-9caa-29247ef66ff4)'
-          scriptType: ps
-          scriptLocation: scriptPath
-          scriptPath: '$(System.DefaultWorkingDirectory)/Scripts/terraformsetup.ps1'
-          arguments: 'environment=dev'
+      # - task: AzureCLI@2
+      #   displayName: SetUp AKS
+      #   name: PlanSetup
+      #   inputs:
+      #    azureSubscription: 'Azure subscription 1(576f8ce4-7fe6-4346-9caa-29247ef66ff4)'
+      #    scriptType: ps
+      #    scriptLocation: scriptPath
+      #    scriptPath: '$(System.DefaultWorkingDirectory)/Scripts/terraformsetup.ps1'
+      #    arguments: 'environment=dev'
        
-       - task: TerraformInstaller@1
-         displayName: install terraform
-         inputs:
-          terraformVersion: latest
-       - task: TerraformCLI@0
-         displayName: 'Check terraform version'
-         inputs:
-          command: version
+      # - task: TerraformInstaller@1
+      #   displayName: install terraform
+      #   inputs:
+      #    terraformVersion: latest
+      # - task: TerraformCLI@0
+      #   displayName: 'Check terraform version'
+      #   inputs:
+      #    command: version
          
-       - task: TerraformCLI@2
-         displayName: Terraform Init
-         inputs:
-          command: 'init'
-          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
-          backendType: 'azurerm'
-          backendServiceArm: 'terraform-aks-azurerm-svc-con'
-          ensureBackend: true
-          backendAzureRmResourceGroupName: 'terraform-storage-rg'
-          backendAzureRmStorageAccountName: 'terraformstatexlskm'
-          backendAzureRmContainerName: 'tfstatefiles'
-          backendAzureRmKey: 'aks-base.tfstate'
-          allowTelemetryCollection: false
-          backendAzureRmResourceGroupLocation: 'eastus'
-       - task: TerraformCLI@0
-         displayName: Terraform Validate
-         inputs:
-          command: 'validate'
-          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
-          allowTelemetryCollection: false       
+      # - task: TerraformCLI@2
+      #   displayName: Terraform Init
+      #   inputs:
+      #    command: 'init'
+      #    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
+      #    backendType: 'azurerm'
+      #    backendServiceArm: 'terraform-aks-azurerm-svc-con'
+      #    ensureBackend: true
+      #    backendAzureRmResourceGroupName: 'terraform-storage-rg'
+      #    backendAzureRmStorageAccountName: 'terraformstatexlskm'
+      #    backendAzureRmContainerName: 'tfstatefiles'
+      #    backendAzureRmKey: 'aks-base.tfstate'
+       #   allowTelemetryCollection: false
+       #   backendAzureRmResourceGroupLocation: 'eastus'
+       #- task: TerraformCLI@0
+        # displayName: Terraform Validate
+         #inputs:
+          #command: 'validate'
+          #workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
+          #allowTelemetryCollection: false       
 
 - stage: DeployAKSClusters
   jobs:
@@ -116,7 +116,7 @@ stages:
                 allowTelemetryCollection: false
                 backendAzureRmResourceGroupLocation: 'eastus'
             
-            - task: TerraformCLI@2
+            - task: TerraformCLI@0
               displayName: Terraform Plan
               inputs:
                 command: 'plan'
