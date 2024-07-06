@@ -122,7 +122,7 @@ stages:
                 workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
                 allowTelemetryCollection: false       
 
-            - task: TerraformCLI@0
+            - task: TerraformCLI@2
               displayName: Terraform Plan
               inputs:
                 command: 'plan'
@@ -130,7 +130,7 @@ stages:
                 environmentServiceName: 'terraform-aks-azurerm-svc-con'
                 commandOptions: '-var ssh_public_key=$(sshkey.secureFilePath) -var environment=$(DEV_ENVIRONMENT) -out $(System.DefaultWorkingDirectory)/terraform-manifests/$(DEV_ENVIRONMENT)-$(Build.BuildId).out'
                 allowTelemetryCollection: false
-            - task: TerraformCLI@0
+            - task: TerraformCLI@2
               displayName: Terraform Apply
               inputs:
                 command: 'apply'
