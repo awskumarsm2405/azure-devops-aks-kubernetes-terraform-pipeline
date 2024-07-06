@@ -130,7 +130,7 @@ stages:
                 environmentServiceName: 'terraform-aks-azurerm-svc-con'
                 commandOptions: '-var ssh_public_key=$(sshkey.secureFilePath) -var environment=$(DEV_ENVIRONMENT) -var location=eastus -out $(System.DefaultWorkingDirectory)/terraform-manifests/$(DEV_ENVIRONMENT)-$(Build.BuildId).out'
                 allowTelemetryCollection: false
-            - task: TerraformCLI@1
+            - task: TerraformCLI@0
               displayName: Terraform Apply
               inputs:
                 command: 'apply'
